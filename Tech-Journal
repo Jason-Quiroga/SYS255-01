@@ -2,6 +2,13 @@ Tech Journal for SYS255-01
 
 Tuesday, September 1st
 
+HOW TO CONNECT TO THE CYBER.LOCAL SERVER:
+1. Login to Remote Student VDI
+2. Open Chrome
+3. Enter the link "https://vcenter01.cyber.local"
+4. Navigate to your systems
+
+
 I. To change the settings of a VSphere environment:
   Click on the pen and paper to the right of the name.
   
