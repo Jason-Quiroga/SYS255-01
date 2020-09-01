@@ -1,0 +1,55 @@
+Tech Journal for SYS255-01
+
+Tuesday, September 1st
+
+I. To change the settings of a VSphere environment:
+  Click on the pen and paper to the right of the name.
+  
+II. To set interface IP Address (from fw01):
+  1. Select 2 to set interface ip address
+  2. Select 1 to pick the WAN interface
+  3. Do not use DHCP to configure the WAN IPv4 Address
+  4. Enter your address of 10.0.17.x, where x is your assigned /24 octet (mine is 111)
+  5. You are using a 24 bit subnet mask
+  6. For the WAN, your upstream gateway is 10.0.17.2
+  7. Use the gateway as your IPv4 name server as well
+  8. We will not be using IPv6, respond no when asked about DHCP
+  9. Press <Enter> to bypass IPv6 config
+  10. When asked about HTTP for the GUI, respond no
+  
+  **For other Interface IP Address (LAN)
+  1. Select 1
+  2. No DHCP
+  3. LAN IP Address is 10.0.5.2 (same for all students)
+  4. Using 24 bit subnet mask
+  5. No upstream LAN gateway (you are the gateway)
+    Press ENTER
+  6. No DHCP
+  7. Press Enter
+  8. Press Enter to bypass IPv6
+  9. Do not enable LAN DHCP Server
+  10. Do not revert to HTTP
+  
+III. How to add a new local admin
+  1. In the user, search for "lusrmgr.msc"
+  2. Right click and select "add user"
+  3. Fill in information
+  4. When completed, right click on user and click "properties"
+  5. In the textboxt, type in "<location>\Administrators" where <location> is specified in the field above.
+  6. Click okay
+  7. Click Apply
+  8. Log out and log into the new administrator user.
+  
+IV. Commands
+  - "whoami" returns the user's username
+  - "hostname" returns the name of the PC (or VM)
+  
+V. How to Check IPv4 Network Connection Properties
+  1. Tutorial Link: https://tinyurl.com/y253qnlx
+  
+VI. How to ping on fw01
+  1. Select 8 to get a shell
+  2. Type in "ping -c 1 champlain.edu" (the "1" is for how many packets you want to send)
+  3. Type "exit" to leave the command shell
+  
+  
