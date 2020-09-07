@@ -1,5 +1,28 @@
 Tech Journal for SYS255-01
 
+Monday, September 7th
+
+I. DNS
+  A. Domain Name Service
+  B. Keeps track of domain names and IP Addresses to websites.
+  C. Record Types
+    1. A - Address Record used to resolve a name to an IPv4 Address (most common) **NAME --> IPv4 ADDRESS
+    2. CNAME - Canonical Name Record used to alias one name to another **NICKNAME --> NAME
+    3. AAAA - Address Record used to resolve a name to an IPv6 Address **NAME --> IPv6 ADDRESS
+    4. PTR - Pointer Record used to resolve IPv4 address to a name (inverse query) **IP ADDRESS --> NAME
+    5. MX - Mail Exchange used to identify the email servers of a domain
+    6. SRV - Service locator used to locate services such as SIP servers, Conference Servers or other services.
+II. Active Directory
+  A. The location where a server stores all of the info related to users, security policies, computers, etc.
+  B. IE. Cyber.local active directory shows everyone on that network.
+  C. Core Services (services that will always be installed in your directory)
+    1. Active Directory Services
+    2. DNS (If DNS is not available, Microsoft will install it during the AD setup Wizard)
+    3. DHCP (Dynamic Host Configuration Protocol)
+      a. Gives out IP Addresses to computers on the network
+    
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Tuesday, September 1st
 
 My Network Assignment:
