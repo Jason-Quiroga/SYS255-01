@@ -1,5 +1,83 @@
 Tech Journal for SYS255-01
 
+Thursday, September 10th
+
+I. Server Manager
+  A. Invoke Server Manager by searching "Server Manager" in the start menu.
+  B. Configuring Local Server
+    1. Select "Local Server" From the side menu
+    2. Click on "Ethernet 01" and select the properties button
+    3. Select "Internet Protocol Version 4" and select properties
+    4. Change the following:
+      a. IP Address: 10.0.5.5
+      b. Netmask: 255.255.255.0
+      c. DNS: 10.0.5.2
+    5. Select apply / ok
+    6. If prompted about discoverable, select YES
+    7. Make sure your time is set to UTC-5:00 Eastern Time (US & Canada)
+    8. Rename your PC to "ad01-jasonquiroga".
+II. Installing the ADDS Role
+  A. Open Server Manager.  From the Manage menu, Select Add Roles and Features
+  B. Click Next until you get to the "Server Roles" tab
+  C. Select Active Directory Domain Services->Add Features.  Pick Active Directory Domain Services
+  D. Click "Add Features"
+  E. Go to the Results tab
+  F. Check "restart destination server" and click yes on the dialogue box that pops up.
+  G. Click finish and allow installation to complete.
+III. Configuring our server to be the primary domain controller for our domain (yourname.local)
+  A. Select the flag on the top of the screen
+  B. Select "promote this server to a domain controller".
+    1. ******** MAKE SURE YOU CHANGED THE HOSTNAME IN THE STEPS ABOVE BEFORE SELECTING TO PROMOTE
+  C. From the deployment operation menu, select "Add a new forest"
+  D. In the root domain name, make it "jason.local"
+  E. Click Next
+  F. Create a password
+  G. Ignore the error message and finish installing
+IV. How to create a DNS Record (able to ping just by typing the PC name and not IP Address)
+  A. Click on the Local Server in Server Manager
+  B. Select DNS
+  C. Right click on the server and select "DNS Manager"
+  D. Find and click on "ad01-jasonquiroga.jason.local"
+  E. Expand "Foward Lookup Zones"
+  F. Right click on "jason.local" and select "New Host (A or AAAA)".
+  G. Under name, type "fw01-jason.quiroga"
+  H. Under IP Address, type "10.0.5.2"
+  I. Click "Add Host"
+  J. Close out of that tab, and on the screen there should now be "fw01-jasonquiroga"
+  K. Double click on that
+  L. Check "Update associated pointer (PTR) record"
+  M. Click "Apply" and ignore the error that pops up.
+V. Creating a Reverse DNS Lookup (Name by IP Address)
+  A. In the DNS Manager (see above), right click the "Reverse Lookup Zones" tab of "ad01-jasonquiroga.jason.local" and select "NEW ZONE"
+  B. Click next until you get to where you must input the "Network ID"
+  C. Set network ID to "10.0.5"
+  D. Go through and select "Finish"
+  E. Go back to "jason.local" and double click the fw01-jasonquiroga
+  F. Toggle "update PTR record", click apply, re-toggle, and then click apply again. Press ok.
+  G. In the reverse lookup zone, it should now display "5.0.10.in-addr.arpa"
+VI. Create Named Domain Users on ad01
+  A. On Server Manager, Click on AD DS and then right click on "AD01-JASONQUIRO" and select "Active Directory Users and Computers"
+  B. Under jason.local, find the Users folder, right click and select "new", then "user"
+  C. This user (first.lastname-adm) will be a Domain Administrator and will have a distinct suffix (ADM) to show this.
+    1. Enter first and last name, then under full name, add "(adm)" to the end.
+    2. Make user logon name "jason.quiroga-adm"
+    3. Click next
+    4. Enter password and uncheck user must change password next login.
+    5. Click Next, then Finish
+    6. In the Users folder, find the new user you created, right click, and select "Add to a group"
+    7. In the field, enter "Domain Admins", then click OK
+  D. This user (first.lastname) will be a normal use1
+    1. Follow all steps above excluding 6 & 7 and without adding "adm" anywhere.
+VII. How to add a user to a domain
+  A. Go to Control Panel -> System and Security -> System
+  B. Click the button to change it's domain (furthest to bottom)
+  C. Under "Member Of", select "Domain" and enter the domain name (jason)
+  D. Click "Ok" and enter the username and password for the Admin account (jason.quiroga-adm)
+  E. Window will popup congratulating you on joining the domain.
+      
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Monday, September 7th
 
 I. DNS
