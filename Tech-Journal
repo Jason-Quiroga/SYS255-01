@@ -1,5 +1,46 @@
 Tech Journal for SYS255-01
 
+
+Monday, September 14th
+
+I. Linux
+  A. CentOS login info:
+    1. Login: root (or jason)
+    2. Password: Ch@mpl@1n!20 (or ************)
+  B. How to set the hostname and IP address of the Linux system
+    1. https://drive.google.com/file/d/159rkSPeDkNa1tEDCzLfifZNbSoiXVGUq/view
+  C. How to add a new privileged user:
+    1. type "useradd jason"
+    2. "passwd jason"
+    3. Enter the password twice
+    4. Type "usermod -aG wheel jason"
+  D. TO GET TO ROOT FROM YOUR LINUX USER
+    1. Type "sudo -i"
+    2. Enter your password
+    
+II. SSH Session (CONNECTING TO THE LINUX SYSTEM THROUGH WINDOWS)
+  A. How to start:
+    1. Go to wks01-jason.quiroga
+    2. Open cmd
+    3. Type "ssh jason@dhcp01-jason"
+    4. Type "yes"
+    5. Enter password to Linux system
+  B. Commands
+    1. "sudo -i" --> Puts you into the root until you type "exit"
+    2. "sudo [command]" --> Executes the command through the root, then gives you normal permissions again
+    3. "pwd" --> Shows the present working directory
+    4. "cd [name" --> Navigates to the specified directory ("cd .." navigates to the parent directory of the directory you're currently on)
+    5. "ls" --> Lists the contents of the directory
+    6. "ls -l" --> Long lists of files and directories
+    6.5 "ls -la" --> Lists hidden files in the directory as well as other files.
+    7. "man [command]" --> Gives you the manual for the specific command
+    8. "cd ~" --> Shortcut for home directory
+    9. "mkdir [name]" --> Creates directory with specified name ("cd sys255/" is an example to enter directory)
+    10. "groups" --> Displays the groups your user has been assigned to
+    11. "history" --> Shows all previous commands used (for the first 10 commands used, use "history | head -n 10")
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Thursday, September 10th
 
 I. Server Manager
@@ -33,7 +74,7 @@ III. Configuring our server to be the primary domain controller for our domain (
   E. Click Next
   F. Create a password
   G. Ignore the error message and finish installing
-IV. How to create a DNS Record (able to ping just by typing the PC name and not IP Address)
+IV. ***How to create a DNS Record (able to ping just by typing the PC name and not IP Address)
   A. Click on the Local Server in Server Manager
   B. Select DNS
   C. Right click on the server and select "DNS Manager"
@@ -47,7 +88,7 @@ IV. How to create a DNS Record (able to ping just by typing the PC name and not 
   K. Double click on that
   L. Check "Update associated pointer (PTR) record"
   M. Click "Apply" and ignore the error that pops up.
-V. Creating a Reverse DNS Lookup (Name by IP Address)
+V. Creating a Reverse DNS Lookup (Name by IP Address) ONLY HAVE TO DO ONCE FOR THE DOMAIN
   A. In the DNS Manager (see above), right click the "Reverse Lookup Zones" tab of "ad01-jasonquiroga.jason.local" and select "NEW ZONE"
   B. Click next until you get to where you must input the "Network ID"
   C. Set network ID to "10.0.5"
