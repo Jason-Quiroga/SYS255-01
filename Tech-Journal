@@ -52,6 +52,7 @@ II. SSH Session (CONNECTING TO THE LINUX SYSTEM THROUGH WINDOWS)
     13. "cat [filename]" --> Prints the contents of a file
     14. "cp [to be copied] [place where copy goes]" --> Copies a directory and adds it to another directory
     16. "cat /directory/file | grep 'something'" --> Returns the text inside of the file that ONLY includes 'something'
+    17. "who" --> Tells you who is currently logged on to the system
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
