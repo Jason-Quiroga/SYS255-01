@@ -9,6 +9,16 @@ I. Linux
     2. Password: Ch@mpl@1n!20 (or ************)
   B. How to set the hostname and IP address of the Linux system
     1. https://drive.google.com/file/d/159rkSPeDkNa1tEDCzLfifZNbSoiXVGUq/view
+    1. Login to CentOS
+    2. Type "nmtui"
+    3. Go to add connection and press enter
+    4. Where it says "ens192" click enter and then find "edit" and click enter again
+    5. Scroll down to "IPv4 Configuration", click enter, and scroll to manual and click enter.
+    6. Enter the IP Addresses (INCLUDING THE NETMASK, /24)
+    7. Enter the Gateway (upstream firewall)
+    8. Enter the DNS Server
+    9. Enter the search domain (jason.local)
+    10. Make sure, at the bottom, that "Automatically Connect" is checked, then click "Enter"
   C. How to add a new privileged user:
     1. type "useradd jason"
     2. "passwd jason"
@@ -38,6 +48,10 @@ II. SSH Session (CONNECTING TO THE LINUX SYSTEM THROUGH WINDOWS)
     9. "mkdir [name]" --> Creates directory with specified name ("cd sys255/" is an example to enter directory)
     10. "groups" --> Displays the groups your user has been assigned to
     11. "history" --> Shows all previous commands used (for the first 10 commands used, use "history | head -n 10")
+    12. "vi /path/to/file/" --> Brings up the vi text editor to view files (type : and then q! then enter to leave without saving, remove the ! to save"
+    13. "cat [filename]" --> Prints the contents of a file
+    14. "cp [to be copied] [place where copy goes]" --> Copies a directory and adds it to another directory
+    16. "cat /directory/file | grep 'something'" --> Returns the text inside of the file that ONLY includes 'something'
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
