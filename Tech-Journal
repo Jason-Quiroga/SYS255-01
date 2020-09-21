@@ -1,6 +1,48 @@
 Tech Journal for SYS255-01
 
+Monday, September 21st
 
+I. DHCP Configuration
+  A. PuTTY
+    1. Load PuTTy and load your domain
+    2. Login using "jason" and password
+  B. Vi
+    1. To enter a file with vi, type "vi <path" (ie "vi /etc/dhcp/dhcpd.conf")
+    2. To save and quit a file, press esc after writing to the file and type "ZZ" then press Enter.
+    3. To quit without saving, enter ":q".
+    4. AFTER YOU EDIT A DHCP CONFIGURATION FILE, YOU HAVE TO RESTART THE SYSTEM
+      a. "systemctl start dhcpd", then check status "systemctl status dhcpd"
+  C. Enabling service to start at boot
+    1. To enable your dhcpd service to start at boot, enter "systemctl enable dhcpd"
+  D. Enable your DHCP on your firewall
+    1. Type "firewall-cmd --add-service=dhcp --permanent" **YOU MUST ADD PERMANENT OR YOU WILL HAVE TO REDO THIS ON NEXT BOOT
+    2. Next, reload with "firewall-cd --reload"
+    3. Then, type "firewall-cmd --list-all" to see if your DHCP was added (it should be under "services" titled "dhcp").
+  E. To release your IP and obtain a new one
+    1. In the console, type "ipconfig /release"
+    2. Then, type "ipconfig /renew"
+    3. You should now have a new IP Address if you type "ipconfig /all"
+  F. How to change the IP lease time
+    1. Go on to wks01 and enter the console and type "ssh jason@dhcp01-jason"
+    2. Enter the password for jason
+    3. Type "sudo -i" then enter the password
+    4. type "vi /etc/dhcp/dhcpd.conf"
+    5. Use arrow keys to navigate to the bottom of the file and type "i"
+    6. Enter "default-lease-time <time in seconds>;
+              max-lease-time <time in seconds>;"
+    7. Press esc and type "ZZ"
+    8. Restart the server "systemctl stop dhcpd", then "systemctl start dhcpd", then "systemctl status dhcpd" and make sure that the system suscessfully restarted
+    9. Then, go back to the cmd on wsk01 and type "ipconfig /release", then "ipconfig /renew"
+    10. Type "ipconfig /all" and make sure that the "Lease obtained" and "Lease expires" equals the amount of time you entered for your seconds.
+    
+  DELIVERABLE 5:
+  Wireshark Packets
+  Under the DHCP packets, there are Release, Discover, Offer, Request, and ACK. Release means that the user is sending a request to the DHCP server to release their current
+  IP Address and cancel the lease. Discover is when the user discovers the DHCP server. Offer is when the DHCP server offers the user an IP Address in the network. Request
+  is when the user accepts the IP Address and asks for the DHCP server to give it the address. ACK is when the server acknowledges the request and sets the IP Address of the
+  user to that IP address officially.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Monday, September 14th
 
 I. Linux
