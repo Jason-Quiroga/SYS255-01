@@ -1,5 +1,63 @@
 Tech Journal for SYS255-01
 
+Sunday, September 27th
+
+I. File Permissions
+  A1. Important commands
+    1. "ls -ld /<directory>/" --> lists file permissions for the directory
+    2. "ls -l /<directory>/" --> Lists files in the directory
+    3. "su - <name>" --> If done as root, will allow you to login to the user without needing a password
+    4. "exit" --> Logs you out of the user
+    5. "id" --> If done as a user, lets you know what groups you're in
+    6. "chown <user> <file path>" --> changes the owner of a file (ie. chown fred /accounting/newproduct.txt)
+  A. Make sure you're logged on to wsk01 and ssh into dhcp-01
+  B. To Add a User
+    1. Get into root (sudo -i)
+    2. Type "useradd <name>" (ie. useradd bob)
+    3. Type "passwd <name>" then enter the password when prompted
+  C. If you type "ls -ld /home/<name>", it will tell you what is in the directory.
+    1. It will also tell you at the beginning their file permissions "drwx------ <owner> <group associated>".
+      a. D --> Directory, because the name is a directory technically (it's the file type, so if it's not a directory it could have a "-")
+      b. R --> Read; the user can read files
+      c. W --> Write; The user can write to files
+      d. X --> Execute; The user can go into the directory and view its contents IF DIRECTORY, anything else is the user can run the file.
+      e. The next three dashes are the GROUP permissions to this file (directory). When a user is created, a group of their name is created and they
+      are added to it.
+      f. The last three dashes are the permissions for "Other". These are for people that are not specified in the access control list, so people who
+      are not the user and not in the group.
+  D. How to add a group
+    1. Type "groupadd <name>" (ie. groupadd accounting)
+  E. How to add users to a group
+    1. "usermod -aG <group> <name>" (ie. usernmod -aG accounting alice)
+  F. How to create a directory for certain permission-level groups (ie. Accounting directory)
+    1. "mkdir /<directoryname>" (ie. mkdir /accounting)
+    2. To view if the directory is there, you can type "ls -l /"
+  G. If you are in root, you can become another user by typing "su - <name>" (ie. su - alice)
+  H. You can put the output of the command you're going to run into a txt file by adding "> <filename>" to the end (ie. echo alice > alice.txt) < will put "alice" in alice.txt
+  I. How to change the group of a directory
+    1. Go into root and type "chgrp <group> /<directory>"
+      a. ie "chgrp accounting /accounting" --> This means that you want to apply the accounting group to the accounting directory. Now users from "accounting" can do
+      what the group can do in the accounting directory.
+  J. How to modify what a group can do in a directory (change it so they can read/write/execute)
+    1. Be in root and type "chmod g+<r/w/x> /<directory>/"
+      a. ie. "chmod g+w /accounting/" --> allows for the "group" set in accounting to be able to write files to the /accounting/ directory.
+      b. If you type "*" instead of a directory, then all files in the directory that you are currently in will have their permissions changed (as long as you have
+      permissions to change those files, if not, those files will not be affected).
+  K. How to modify the "other"s to not be able to read, write, and execute a file
+    1. In root, type "chmod o-<r/w/x> /<directory>/"
+      a. ie. "chmod o-rwx /accounting/" --> Makes it so all other users cannot do anything in this directory.
+  L. Typing in numbers instead of letters for chmod (IN OCTAL)
+    1. You can type letters in for chmod instead of "g+w" or whatever it is.
+    2. To modify, you can type "chmod -v 600 alicefile.txt", which would give read and write to the owner, but nothing to anyone else.
+    3. This is the case because in binary:
+      a. Read     r   100   4 (bits)
+      b. Write    w   010   2 (bits)
+      c. Execute  x   001   1 (bits)
+    4. So, for read and write, the number would be "6". If we wanted everyone to be able to read and write, we could type "666". If we want to give everyone
+    permissions, we can type "777" because they all add to 7 bytes.
+    
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Monday, September 21st
 
 I. DHCP Configuration
