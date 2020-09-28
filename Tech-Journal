@@ -1,5 +1,67 @@
 Tech Journal for SYS255-01
 
+Monday, September 28th
+
+I. ADDS and Group Policy
+  A. To add a group policy
+    1. Navigate to ad01-jason.quiroga
+    2. On server manager, go to the top right and click on tools, then "Active Directory Users and Computers"
+    3. Right click on "jason.local" and select "new" then "Organizational Unit"
+    4. Name it "SYS255"
+    5. Right click on SYS255 and add 3 new OUs titled "Accounts", "Computers", and "Groups"
+      a. These objects are all now "Schema" and show up when you click "New". Schema are objects that make up a database, in this case.
+  B. Adding users to the "Accounts" OU
+    1. Navigate to the OU folder, select new, and fill in the information for the new user.
+    2. Make sure you uncheck "change password on next login" if they don't need to do that.
+  C. Moving computers to a new OU
+    1. Navigate to the "Computers" section of jason.local
+    2. Find wsk01 and drag it to the "Computers" section in "SYS255"
+    3. A popup will appear, click yes
+    4. Computer is now moved.
+  D. Adding a new global security group
+    1. Navigate to the "Groups" section in SYS255 and click "New" then "Group"
+    2. Name the group "custom-desktop" and click Ok
+    3. Add users (alice and bob) by double clicking the group and selecting "members" then "add" and typing in the names in the field given.
+    4. Click Ok, then Apply.
+  E. When making groups, it is good practice to be specific.
+  F. Creating a group policy that defines some user level settings
+    1. In the server, go to "Tools" then "Group Policy Management"
+    2. Select the SYS255 OU and select "Create a GPO in this domain, and Link it here" and call it sys255-desktop
+    3. Click on the new policy under SYS255 and under where it says "Security Filtering" select "add"
+    4. Type in "custom-desktop" and then click add
+    5. Remove "Authenticated Users" from the list
+    6. Add "domain computers" to the list
+    7. Under the "delegation" tab at the top of the screen, select "Advanced"
+    8. From the list, find "Domain Computers" and in the list, select "Deny" for "Apply group Policy" and click apply then ok.
+    9. The policy now applies to computers on the domain.
+  G. Nuking the Recycling Bin for users
+    1. Right click on sys255-desktop and select edit
+    2. Under User Configuration > Policies > Administrative Templates > Desktop, Find where it says "Remove Recycle Bin Icon from desktop" and right click
+    and select "Edit" then at the top left, change the setting from "Not Configured" to "Enabled" and click apply and ok.
+    3. Now, if you log in as a user on the domain (alice), then the recycling bin should be gone.
+      a. If you can't see the user on wsk01, restart wsk01 and a "other user" option will appear
+    4. To view what groups you're in, go into the command prompt and type "gpresult /r"
+  H. Disabling Last Login on Computer (GPO in Computers)
+    1. Under SYS255 and under Computers, Create a new GPO called "DisableLastLogin"
+    2. Double click on the GPO and set the Security Filtering to only be set to "Domain Computers"
+    3. Right click the policy and select edit
+    4. Navigate to Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options and click on it
+    5. In the list, navigate to "Interactive Logon: Don't display last signed-in" and enable it.
+    6. The Computers on the network should no longer display their users that logged on last.
+  I. To put GPO's in to effect without restarting, start cmd as administrator and type "gpupdate /force", and then "gpresult /scope computer /r" to make
+  sure that it worked properly (you should see it in "Applied Group Policies".
+
+
+Preparing for next week's assessment:
+1. Review Tech Journal and make sure that directions are clear and easy to follow
+2. Go over old labs to refresh my memory
+3. Get a good nights sleep on sunday
+4. Eat a nice breakfast
+5. Get away from any distractions that may harm my ability to do the assessment
+Bonus Step: Pray to anything that's listening
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Sunday, September 27th
 
 I. File Permissions
