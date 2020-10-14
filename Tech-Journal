@@ -1,5 +1,29 @@
 Tech Journal for SYS255-01
 
+Wednesday, October 14th
+
+I. How to change settings of a server through command line
+  A. Use the command "sconfig" to get to the configs
+II. How to add an organizational unit (OU)
+  A. Navigate to AD02
+  B. Under "AD DS" and "AD02-JASON", right click and select "Active Directory Users and Computers"
+  C. Navigate to "jason.local" and expand it, then right click and select "New Organizational Unit"
+  D. Name it "SYS-255" (or whatever you want to name it)
+  E. You now have an OU
+  F. To add more OUs to the OU, do the same steps except under "SYS-255" named "Computers" "Users" and "Groups"
+III. How to access another server using File Server Manager
+  A. In AD02, under "File and Storage Services", select the "Servers" tab and find "FS01-JASON"
+  B. Right click and select "File Server Resource Manager"
+IV. How to create a new share using Server Manager
+  A. In Server Manager and under "Shares", right click and select "New Share..."
+  B. Choose "SMB Share - Quick"
+  C. Select "FS01-JASON" from the Share Location tab
+  D. Create a share named "Sales" (or whatever) and take note of the local and remote paths to share.
+  E. Leave the Share Settings alone
+  F. Under permissions, select "Customize Permissions" and navigate to the "Share" tab
+  G. Add the "Sales-Users" group with full control custom permissions and then delete the "allow everyone" share.
+  H. Click apply, then okay, then finish setting up the new share.
+
 Monday, September 28th
 
 I. ADDS and Group Policy
