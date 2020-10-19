@@ -23,6 +23,8 @@ IV. How to create a new share using Server Manager
   F. Under permissions, select "Customize Permissions" and navigate to the "Share" tab
   G. Add the "Sales-Users" group with full control custom permissions and then delete the "allow everyone" share.
   H. Click apply, then okay, then finish setting up the new share.
+V. How to map a drive with group policy:
+  A. https://blogs.manageengine.com/active-directory/active-directory-academy/2019/11/18/mapping-drives-using-group-policy-preferences.html
 
 Monday, September 28th
 
