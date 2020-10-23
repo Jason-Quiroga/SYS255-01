@@ -2,7 +2,7 @@ Tech Journal for SYS255-01
 
 Thursday, October 22nd
 
-I. Web01 commands
+I. Web01 / Apache Setup
   A. To restart the SSHD
     1. In web01-jason, enter the command "service sshd restart"
     2. Enter the password to the user when prompted
