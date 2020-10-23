@@ -1,5 +1,49 @@
 Tech Journal for SYS255-01
 
+Thursday, October 22nd
+
+I. Web01 commands
+  A. To restart the SSHD
+    1. In web01-jason, enter the command "service sshd restart"
+    2. Enter the password to the user when prompted
+    3. Service will restart
+  B. To check the status of a service, type "service [service name] status"
+  C. How to install HTTPD on web01-jason
+    1. In the command line, type "yum install httpd" and it will install it for you.
+    2. When prompted if it's okay, type "y"
+  D. How to add the HTTP and HTTPS services to your firewall in web01-jason
+    1. Check status of firewall using the command "firewall-cmd --state", it should say "running"
+    2. Retrieve your currently active zones using the command "firewall-cmd --get-active-zones" (it should say "ens192", this is the zone we will be adding the ports to).
+    3. Open port 80 and 443 using the command "firewall-cmd --zone=public --permanent --add-service=[http and https]"
+    4. Reload your firewall with "firewall-cmd --reload"
+    5. Check to make sure that http and https are added to the firewall settings by using the command "firewall-cmd --list-all".
+        You should see http and https in the services tab
+    6. IF YOU NEED TO TAKE THE SERVICES DOWN, USE THE SAME COMMAND AS BEFORE, BUT INSTEAD OF "add-service" USE "remove-service" AND RELOAD.
+    **Useful guide: https://linuxconfig.org/redhat-8-open-http-port-80-and-https-port-443-with-firewalld
+  E. To start HTTPD, use the command "systemctl start httpd"
+  F. How to remove the welcome message file in the web server
+    1. On web01-jason, enter the command "rm /etc/httpd/conf.d/welcome.conf"
+    2. type "yes" when it asks to confirm
+  G. How to add a new webpage to your webserver
+    1. on web01-jason, type "cat > /var/www/html/[filename].html" (in our case, index.html)
+    2. Press enter to create the file
+    3. Enter the file through vi (vi /var/www/html/[filename].html"
+    4. Type "i" to start typing (and when you're finished press escape and type ZZ)
+    5. Type in HTML code (<h1>This is my web server</h1>)
+    6. Restart httpd (systemctl restart httpd)
+    7. Check the server for your file.
+  H. Creating a page with PHP
+    1. Type "cat > /var/www/html/index.php" PHP AT THE END
+    2. Type in your php based code (look up a reference or return to the lab "Week 8 - Apache Lab")
+    3. Press control + c
+    4. Restart your httpd service (systemctl restart httpd)
+    5. Check on wsk02 that it works (url web01-jason/index.php)
+  I. Install realmd for a linux system to work on a windows ADD
+    1. Type "sudo yum install realmd samba samba-common-tools oddjob oddjob-mkhomedir sssd"
+    2. Restart httpd
+    3. Join the domain using the command "realm join --user=jason.quiroga-adm@jason.local jason.local" then type "realm list"
+
+
 Wednesday, October 14th
 
 I. How to change settings of a server through command line
