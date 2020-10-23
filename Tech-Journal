@@ -8,7 +8,7 @@ I. Web01 commands
     2. Enter the password to the user when prompted
     3. Service will restart
   B. To check the status of a service, type "service [service name] status"
-  C. How to install HTTPD on web01-jason
+  C. How to install HTTPD on web01-jason (THIS IS INSTALLING APACHE)
     1. In the command line, type "yum install httpd" and it will install it for you.
     2. When prompted if it's okay, type "y"
   D. How to add the HTTP and HTTPS services to your firewall in web01-jason
