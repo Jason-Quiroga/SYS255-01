@@ -1,5 +1,24 @@
 Tech Journal for SYS255-01
 
+Monday, October 26th
+
+I. Setting up a DHCP server on windows
+  A. How to set up a DHCP server on windows
+    1. Log on to AD02 and navigate to "All Servers"
+    2. Right click on FS01-JASON and click "Add Roles and Features"
+    3. Click "next" on Before you begin
+    4. Select "Role-based or feature-based installation" and click next
+    5. Select destination server (FS01-JASON)
+    6. Under Server Roles, select "DHCP" and click next
+    7. Under features and DHCP Server, click next
+    8. On confirmation page, select automatically restart if required (it's not required though)
+    9. Click install to install DHCP
+    10. When it finishes, select "Configure DHCP Server" and it will open up a page
+    11. Click next on description
+    12. Under Authorization, make sure "Use the following user's credentials" is selected and click commit
+    13. You can now open the DHCP management console (on the left side panel)
+
+
 Thursday, October 22nd
 
 I. Web01 / Apache Setup
