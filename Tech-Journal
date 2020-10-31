@@ -17,6 +17,22 @@ I. Setting up a DHCP server on windows
     11. Click next on description
     12. Under Authorization, make sure "Use the following user's credentials" is selected and click commit
     13. You can now open the DHCP management console (on the left side panel)
+    14. SOURCE: https://activedirectorypro.com/configure-dhcp-server/
+  B. Setting up a new IP Scope
+    1. Navigate to the DHCP tab, right click on FS01 and select "DHCP Manager"
+    2. Right click on "IPv4" and select "New Scope"
+    3. Click next in the wizard
+    4. Enter a name and description of the scope
+    5. Enter the start IP, End IP, CIDR Notation (under "Length"), and Subnet Mask, then click next
+    6. Enter any IP Addresses you don't want to be used that are inside of your scope (for our range of 100-150, we can ignore this).
+    7. Enter how long you want the lease to be for and select next
+    8. Click "Yes, I want to configure these options now".
+    9. Enter default gateway (10.0.5.2) and click next
+    10. Enter the IP of the DNS Server that the users should should (10.0.5.6) and click add, then next.
+    11. Skip the WINS servers and select "next"
+    12. Click yes to activate scope now and select next
+    13. Scope is now set up.
+    14. SOURCE: https://www.serverlab.ca/tutorials/windows/network-services-windows/step-step-creating-windows-server-dhcp-scope/
 
 
 Thursday, October 22nd
