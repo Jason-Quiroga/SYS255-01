@@ -1,5 +1,50 @@
 Tech Journal for SYS255-01
 
+Monday, November 2nd
+
+I. Powershell
+  A. How to invoke powershell
+    1. On the start menu, type "Windows Powershell" and it should be there.
+  B. To tell where you're currently running the commands from, type "Write-Host $env:Path"
+  C. Creating your own Alias
+    1. Creating your own alias allows you to type in something and allows a command to be executed
+    2. For example, typing "Set-Alias -Name ifconfig -value ipconfig" will allow you to type "ifconfig" and bring up the ipcongig command results
+    3. *Be warned, this only lasts for the current powershell session that you are in and does not persist.
+  D. To create a .ps1 file
+    1. Create a txt file, write your code, and then click save as and at the end of the file name, put ".ps1" and it will be a ps1 file.
+    2. Alternatively, in powershell type "notepad.exe .\[name].ps1"
+  E. Parameters in scripting
+    1. To add parameters into your code that the user must enter, in your ps1 file to the top add "param([string] $listofthings)" EXACTLY LIKE THIS WITH [string] STILL THERE
+    2. This will make a parameter called "$listofthings" which is set to the string of whatever the user adds
+    3. For the user to use the code, they must first type ".\[filename].ps1 -listofthings .\servers.txt".
+    4. This will make it so that in the script, whatever uses "listofthings" in it, it will refer to ".\servers.txt" and the list of things in there.
+  D. To add more parameters
+    1. inside of the "param", you just add a comma after and keep adding them:
+    2. Example: "param([string] $type, [string] $servers)"
+  F. How to create a new AD User through powershell and add to a group
+    1. Run powershell as administrator
+    2. type "new-aduser -samaccountname "Name" -displayname "Name" -name "Name" -Path "OU=Users,OU=SYS-255,DC=jason,DC=local"
+    3. To add them to a group, type "add-adgroupmember -identity "Group Name" -Members "Name of Person"
+  G. How to remotely connect to a computer through PS
+    1. To list available PCs, type "get-adcomputer -filter * | select-object Name"
+    2. To connect, type "enter-pssession -computername WKS02-JASON" or whichever computer you want to connect
+  H. To just connect to a PC to use one command
+    1. Type "invoke-command -computername WKS01-JASON -scriptblock { ipconfig }" Or whatever PC and Command you want.
+
+Commands
+- $mypath = $env:Path --> This makes a variable called "mypath" be equal to the Path at which you're typing commands into
+- Write-Host $mypath --> This command outputs the value of whatever "mypath" is
+- foreach($item in $mypath.split(':')) --> This command will use a for loop to access all items in "mypath" and when coupled
+  with 
+  "
+  {
+  Write-Host $item
+  }
+  "
+  Will allow for each item to be output by the console.
+- 
+
+
 Monday, October 26th
 
 I. Setting up a DHCP server on windows
